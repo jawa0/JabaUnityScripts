@@ -32,7 +32,7 @@ Unity's Standard Shader (the default when you create a new Material) provides se
 This is a modified version of some code from the Unity forums, here: http://forum.unity3d.com/threads/standard-material-shader-ignoring-setfloat-property-_mode.344557/
 
 
-# JABooleanSignal
+## JABooleanSignal
 Location: Scripts/JABooleanSignal.cs
 
 There are often times where you'll want to be able to tell whether some true/false condition changed from false to true or from true to false. Typically, you end up adding pairs of variables for the present and previous values of the condition. JABooleanSignal just wraps this so you can add one field of type JABooleanSignal, instead of two separate bools.
