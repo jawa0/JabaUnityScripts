@@ -1,15 +1,10 @@
 # JabaUnityScripts
 Helper scripts for Unity development
 
-## JAShaderUtils
-Location: Scripts/JAShaderUtils.cs
+## JADebugDrawPhysics
+Location: Scripts/DebugDraw/JADebugDrawPhysics.cs
 
-    public static void SetMaterialRenderingMode(Material material, StandardShaderRenderingMode mode);
-
-
-Unity's Standard Shader (the default when you create a new Material) provides several rendering modes. There's a drop-down list in the material editor GUI to switch the rendering mode, but it's not as easy to do programmatically. Here's how you can do it from code. This is useful if, for example you're creating procedural materials in code.
-
-This is a modified version of some code from the Unity forums, here: http://forum.unity3d.com/threads/standard-material-shader-ignoring-setfloat-property-_mode.344557/
+Put this on a GameObject with a Rigidbody, and it will draw the body's velocity vector and estimated acceleration vector. The acceleration is estimated because Unity does not give direct access to read back the forces or accelerations on a Rigidbody. So, we take the difference in velocity over the previous two FixedUpdate steps, and divide that by the timestep. (Hmm. there's probably a divide-by-zero error in there if you pause time using Time.timeScale). It uses Debug.DrawRay(...), so to see the vectors in the Game window, you'll need to enable Gizmos.
 
 ## JADebugDrawSpringJoints
 Location: Scripts/DebugDraw/JADebugDrawSpringJoints.cs
@@ -21,10 +16,21 @@ This script is useful for debugging Unity's SpringJoints. Unity will draw the sp
 You can set the stretched, compressed, or neutral colours to whatever you want.
 NOTE: you need to enable show gizmos (button in top-right of Game view) if you want to see the springs in the Game window, not just in the Scene window.
 
-# JADebugDrawCollisions
+## JADebugDrawCollisions
 Location: Scripts/DebugDraw/JADebugDrawCollisions.cs
 
 This script will draw all contact normals at all contact points for the given object. You can use this to debug collision problems. The colour and scale of the lines used to draw the normals is customizable. Make sure to enable Gizmos if you want to see the output in the Game window, not just the Scene window.
+
+## JAShaderUtils
+Location: Scripts/JAShaderUtils.cs
+
+    public static void SetMaterialRenderingMode(Material material, StandardShaderRenderingMode mode);
+
+
+Unity's Standard Shader (the default when you create a new Material) provides several rendering modes. There's a drop-down list in the material editor GUI to switch the rendering mode, but it's not as easy to do programmatically. Here's how you can do it from code. This is useful if, for example you're creating procedural materials in code.
+
+This is a modified version of some code from the Unity forums, here: http://forum.unity3d.com/threads/standard-material-shader-ignoring-setfloat-property-_mode.344557/
+
 
 # JABooleanSignal
 Location: Scripts/JABooleanSignal.cs
