@@ -1,6 +1,6 @@
 ﻿// The MIT License (MIT)
 //
-// Copyright (c) 2015 Jabavu W. Adams.
+// Copyright (c) 2015-2016 Jabavu W. Adams.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,48 +20,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-// DebugDrawSpringJoints.cs
-
 using UnityEngine;
-using System.Collections;
 
-public class DebugDrawSpringJoints : MonoBehaviour 
+
+public class JADebugDrawCollisions : MonoBehaviour 
 {
-	public Color stretchedColor = Color.red;
-	public Color compressedColor = Color.green;
-	public Color neutralColor = Color.cyan;
+	public float normalScale = 1.0f;
+	public Color contactNormalColor = Color.yellow;
 
-
-	void Update() 
+	void OnCollisionStay( Collision collisionInfo )
 	{
-		foreach (SpringJoint spring in GetComponents<SpringJoint>()) 
+		foreach ( ContactPoint cp in collisionInfo.contacts )
 		{
-			Vector3 p0 = transform.TransformPoint(spring.anchor);
-
-			Vector3 p1 = spring.connectedBody.transform.TransformPoint(
-				spring.connectedAnchor);
-
-			// Draw the spring with varying colours depending on whether
-			// it's stretched, compressed, or neither.
-
-			float currentLength = Vector3.Distance(p0, p1);
-			Color springColor;
-
-			if (currentLength > spring.maxDistance)
-			{
-				springColor = stretchedColor;
-			}
-			else if (currentLength < spring.minDistance)
-			{
-				springColor = compressedColor;
-			}
-			else
-			{
-				springColor = neutralColor;
-			}
-
-
-			Debug.DrawLine(p0, p1, springColor);
+			Debug.DrawRay( cp.point, normalScale * cp.normal, contactNormalColor, 0.0f, false );
 		}
 	}
 }

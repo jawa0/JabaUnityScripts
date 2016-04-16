@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 
 
-// BooleanSignal
+// JABooleanSignal
 //
 // Assume that you have some boolean value or condition that you check
 // periodically. In addition to checking the current value, you want to
@@ -31,7 +31,7 @@
 // false->true and true->false transitions.
 
 
-public class BooleanSignal
+public class JABooleanSignal
 {
     // What is the value now?
     private bool m_currentValue;
@@ -41,7 +41,7 @@ public class BooleanSignal
 
 
     // Default constructor sets signal to false.
-    public BooleanSignal()
+    public JABooleanSignal()
     {
 	Clear();
     }
@@ -86,7 +86,7 @@ public class BooleanSignal
     //		// ...
     //		}
 
-    public static implicit operator bool(BooleanSignal signal)
+    public static implicit operator bool(JABooleanSignal signal)
     {
 	return signal.CurrentValue;
     }
