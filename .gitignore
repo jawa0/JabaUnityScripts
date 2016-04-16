@@ -1,3 +1,5 @@
+.meta	# Only because this is meant to be dropped into other Unity projects.
+
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
