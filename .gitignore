@@ -1,4 +1,4 @@
-.meta	# Only because this is meant to be dropped into other Unity projects.
+*.meta
 
 [Ll]ibrary/
 [Tt]emp/
